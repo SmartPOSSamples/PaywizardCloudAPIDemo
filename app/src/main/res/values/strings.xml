@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">PaywizardCloudAPIDemo</string>
+    <string name="registerTerminal">registerTerminal</string>
+    <string name="queryTerminalList">queryTerminalList</string>
+    <string name="unbindTerminal">unbindTerminal</string>
+    <string name="please_input_trans_amount">trans amount</string>
+    <string name="trans_amount_demo">trans amount</string>
+    <string name="please_input_tip_amount">tip amount</string>
+    <string name="tip_amount_demo">tip amount</string>
+    <string name="please_input_other_amount">other amount</string>
+    <string name="other_amount_demo">other amount</string>
+    <string name="start_trans">start trans</string>
+    <string name="end_trans">cancel trans</string>
+    <string name="please_input_old_trace">OriTransID</string>
+    <string name="please_input_old_trans_index_code">OriTransIndexCode</string>
+    <string name="please_input_old_transid">OriTransId</string>
+    <string name="please_input_old_rrn">OriRrn</string>
+    <string name="please_input_old_invoice_number">OriInvoiceNumber</string>
+    <string name="cancel_trans">cancel</string>
+    <string name="do_trans">do trans</string>
+    <string name="please_input_rade_no">tradeNo</string>
+    <string name="query_trans_result">Query Result</string>
+    <string name="pos_id">pos id</string>
+    <string name="terminal_sn">terminal sn</string>
+    <string name="check_sn">please input pos id and terminal sn</string>
+    <array name="transaction_type">
+        <item>Purchase</item>
+        <item>PreAuth</item>
+        <item>IncrementalAuth</item>
+        <item>AuthVoid</item>
+        <item>AuthCompletion</item>
+        <item>BalanceInquiry</item>
+        <item>Reversal</item>
+        <item>Refund</item>
+        <item>Settle</item>
+        <item>TipAdjust</item>
+        <item>WorldPay only</item>
+        <item>ReadCard</item>
+        <item>QueryTransaction</item>
+        <item>PrintLast</item>
+        <item>PrintTotal</item>
+        <item>PrintDetail</item>
+        <item>PrintParameter</item>
+        <item>GetPosInfo</item>
+        <item>VerifyCardPan</item>
+    </array>
+</resources>
