@@ -73,8 +73,10 @@ public class MainActivity extends BaseActivity {
             String posId = etPosId.getText().toString();
             String terminalSn = etTermialSN.getText().toString();
             if(TextUtils.isEmpty(posId) || TextUtils.isEmpty(terminalSn)){
-                Toast.makeText(this, R.string.check_sn, Toast.LENGTH_SHORT).show();
-                return;
+//                Toast.makeText(this, R.string.check_sn, Toast.LENGTH_SHORT).show();
+//                return;
+                posId = HttpHelper.POS_ID;
+                terminalSn = HttpHelper.TERMINAL_SN;
             }
             jsonObject.put("clientId", HttpHelper.CLIENT_ID);
             jsonObject.put("merchantId", HttpHelper.MID);
@@ -258,7 +260,36 @@ public class MainActivity extends BaseActivity {
     }
 
     public void cancel(View view) {
+        JSONObject jsonObject = new JSONObject();
+        String posId = etPosId.getText().toString();
+        try {
+            jsonObject.put("clientId", HttpHelper.CLIENT_ID);
+            jsonObject.put("posId", HttpHelper.POS_ID);
+            jsonObject.put("sn", HttpHelper.TERMINAL_SN);
+            jsonObject.put("operationType", 3);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        String json = jsonObject.toString();
+        Log.d(TAG, "request body = " + json);
+        RequestBody requestBody = RequestBody.create( json, MediaType.parse("application/json"));
+        HttpHelper.create()
+                .terminalOperations(requestBody, getSign(json)).enqueue(new BaseCallback<Bean<TransResult>>() {
+                    @Override
+                    protected void onSuccess(Bean<TransResult> transactionRequestBean) {
+                        Log.d(TAG, "transactionRequestBean = " + transactionRequestBean.getCode());
+                        showLog(TAG, transactionRequestBean.getData().toString());
+                    }
+
+                    @Override
+                    protected void onFail(String errorMsg) {
+                        super.onFail(errorMsg);
+                        showLog(TAG, errorMsg);
+                    }
+                });
     }
+
 
     private void showLog(String tag, String log){
         runOnUiThread(new Runnable() {

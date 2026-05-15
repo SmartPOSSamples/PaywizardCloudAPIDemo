@@ -55,4 +55,12 @@ public interface HttpApiService {
      */
     @POST("getCashierAgentResult")
     Call<Bean<TransResult>> getCashierAgentResult(@Body RequestBody body, @Header("sign") String sign);
+    /**
+     * Get Transaction Result
+     * @param body
+     * @param sign
+     * @return
+     */
+    @POST("terminalOperations")
+    Call<Bean<TransResult>> terminalOperations(@Body RequestBody body, @Header("sign") String sign);
 }
